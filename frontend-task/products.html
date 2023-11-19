@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>product-manipulation</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+<main>
+    <div class="inputFields">
+        <h4>Add product</h4>
+        <input type="text" placeholder="id" id="enterId">
+        <input type="text" placeholder="title" id="enterTitle">
+        <input type="text" placeholder="brand" id="enterBrand">
+        <input type="text" placeholder="color" id="enterColor">
+        <input type="text" placeholder="size" id="enterSize">
+        <input type="text" placeholder="price" id="enterPrice">
+    </div>
+    <div class="buttons">
+        <button id="add">add</button>
+        <button id="update">update</button>
+        <button id="remove">remove</button>
+
+    </div>
+</main>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyABVk5mM5ny0ZuwMguvnHG5iBE39rOEOU8",
+        authDomain: "car-parts-b1a11.firebaseapp.com",
+        databaseURL: "https://car-parts-b1a11-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "car-parts-b1a11",
+        storageBucket: "car-parts-b1a11.appspot.com",
+        messagingSenderId: "1012771696073",
+        appId: "1:1012771696073:web:587c39799e05c8acf6cc18"
+    };
+
+
+</script>
+<script src="baza.js"></script>
+</body>
+</html>

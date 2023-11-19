@@ -1,0 +1,34 @@
+{
+  "product1": {
+    "id": 1,
+    "image": "/img/proizvod1.svg",
+    "title": "Set of GT-S Series Cross Drilled",
+    "brand": "Brembo",
+    "color": "Red",
+    "price": "1770.00"
+  },
+  "product2": {
+    "id": 2,
+    "image": "/img/proizvod2.svg",
+    "title": "Just Disk GT-S Cross Drilled",
+    "brand": "Brabour International",
+    "size": "405mm",
+    "price": "950.00"
+  },
+  "product3": {
+    "id": 3,
+    "image": "/img/proizvod3.svg",
+    "title": "GT Slotted 2 Piece Brake Rotors",
+    "brand": "Brembo",
+    "color": "Yellow",
+    "price": "1670.00"
+  },
+  "product4": {
+    "id": 4,
+    "image": "/img/proizvod4.svg",
+    "title": "Synthetic Break Fluid",
+    "brand": "Valvoline",
+    "size": "354ml",
+    "price": "10.00"
+  }
+}

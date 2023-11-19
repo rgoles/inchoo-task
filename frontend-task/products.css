@@ -1,0 +1,23 @@
+body {
+    font-family: 'Roboto', 'Source Serif 4', sans-serif;
+    font-size: 14px;
+}
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputFields {
+    width: 20vh;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.buttons {
+    width: 20vh;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}

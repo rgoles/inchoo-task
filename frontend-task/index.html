@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&family=Palanquin:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&family=Source+Serif+4:opsz,wght@8..60,200;8..60,300;8..60,400;8..60,500;8..60,600;8..60,700;8..60,800;8..60,900&display=swap"
+          rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inchoo frontend task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+    <img src="img/inchooLogo.svg" alt="inchoo logo">
+    <div class="shopping-cart-div">
+        <button class="shopping-cart-button" id="cart-button"><img src="img/shopping-cart.svg" alt=""></button>
+        <div class="cart-modal">
+            <div class="cart-modal-triangle"></div>
+            <div class="cart-modal-opened">
+                <div><p id="product-number">My Cart (3 items)</p>
+                </div>
+                <button class="scroll-button" id="scroll-button-up">gore</button>
+                <div>
+                    <ul class="cart-modal-ul" id="cart-modal-ul">
+                    </ul>
+                </div>
+                <button class="scroll-button" id="scroll-button-down">dolje</button>
+                <div class="cart-buttons">
+                    <button class="edit-cart-btn" id="edit-cart-button">Edit cart</button>
+                    <button class="checkout-btn" id="checkout-button">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
