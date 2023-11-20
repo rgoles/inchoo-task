@@ -1,17 +1,8 @@
 "use strict";
-let productData = {
-    "product1": {
-        "id": 1, "image": "/img/proizvod1.svg", "title": "Set of GT-S Series Cross Drilled", "brand": "Brembo", "color": "Red", "price": 1770.00
-    }, "product2": {
-        "id": 2, "image": "/img/proizvod2.svg", "title": "Just Disk GT-S Cross Drilled", "brand": "Brabour International", "size": "405mm", "price": 950.00
-    }, "product3": {
-        "id": 3, "image": "/img/proizvod3.svg", "title": "GT Slotted 2 Piece Brake Rotors", "brand": "Brembo", "color": "Yellow", "price": 1670.00
-    }, "product4": {
-        "id": 4, "image": "/img/proizvod4.svg", "title": "Synthetic Break Fluid", "brand": "Valvoline", "size": "354ml", "price": 10.00
-    }, "product5": {
-        "id": 5, "image": "/img/proizvod5.svg", "title": "Alcon 380x34mm Front Rotors Pair Nissan GT-R R35 2009-2021", "brand": "Alcon", "size": "380x34mm", "price": 1099.98
-    },
-}
+import './firebase.js'
+import {getDatabase, onValue, ref,} from "firebase/database";
+
+
 // This happens when you click on a cart button to open it
 window.addEventListener('load', function () {
     const cartButton = document.querySelector('#cart-button')
@@ -35,83 +26,100 @@ window.addEventListener('load', function () {
 })
 
 
+const db = getDatabase();
+
+const productDataRef = ref(db, 'Products/');
+onValue(productDataRef, (snapshot) => {
+    const productData = snapshot.val();
+
+    function renderProduct(product, currentIndex, totalProducts) {
+
+        ++productInCartCounter
+        const productNumber = document.querySelector('#product-number')
+        productNumber.textContent = `My Cart (${productInCartCounter} items)`
+
+        const li = document.createElement("li")
+        li.id = 'list'
+        const productDiv = document.createElement('div')
+        productDiv.classList.add('product')
+        li.appendChild(productDiv)
+
+        const hr = document.createElement('hr')
+        hr.classList.add('solid')
+
+        const image = product.image || '';
+        if (product.image) {
+            const image = document.createElement('img')
+            image.src = product.image
+            productDiv.appendChild(image)
+        } else {
+            console.log('nema slike')
+        }
+
+        const productInfo = document.createElement('div')
+        productInfo.classList.add('product-info')
+        productDiv.appendChild(productInfo)
+
+
+        const title = product.title || '';
+        if (title) {
+            let clonedSpan = document.createElement('span')
+            clonedSpan.classList.add(`product-title`)
+            clonedSpan.textContent = product.title
+            productInfo.appendChild(clonedSpan)
+        }
+        const brand = product.brand || '';
+        if (brand) {
+            let clonedSpan = document.createElement('span')
+            clonedSpan.classList.add(`product-brand`)
+            clonedSpan.textContent = `Brand: ${product.brand}`
+            productInfo.appendChild(clonedSpan)
+        }
+        const color = product.color || '';
+        if (color) {
+            let clonedSpan = document.createElement('span')
+            clonedSpan.classList.add(`product-color`)
+            clonedSpan.textContent = `Color: ${product.color}`
+            productInfo.appendChild(clonedSpan)
+        }
+        const size = product.size || '';
+        if (size) {
+            let clonedSpan = document.createElement('span')
+            clonedSpan.classList.add(`product-size`)
+            clonedSpan.textContent = `Size: ${product.size}`
+            productInfo.appendChild(clonedSpan)
+        }
+        const price = product.price || '';
+        if (price) {
+            let clonedSpan = document.createElement('span')
+            clonedSpan.classList.add(`product-price`)
+            clonedSpan.textContent = `1 x $${product.price}`
+            productInfo.appendChild(clonedSpan)
+        }
+
+
+        cartModalUl.appendChild(li)
+        if (currentIndex !== totalProducts - 1) {
+            const hr = document.createElement('hr');
+            hr.classList.add('solid');
+            cartModalUl.appendChild(hr);
+        }
+
+    }
+
+    let totalProducts = Object.keys(productData).length
+    for (const [index, productId] of Object.keys(productData).entries()) {
+        const product = productData[productId];
+        renderProduct(product, index, totalProducts);
+    }
+});
+
+
 // cartModalUl - a place where product is rendered and shown
 let cartModalUl = document.querySelector('#cart-modal-ul')
 // variable for numbers of products in cart
 let productInCartCounter = 0
 
-function renderProduct(product, currentIndex, totalProducts) {
-
-    ++productInCartCounter
-    const productNumber = document.querySelector('#product-number')
-    productNumber.textContent = `My Cart (${productInCartCounter} items)`
-
-    const li = document.createElement("li")
-    li.id = 'list'
-    const productDiv = document.createElement('div')
-    productDiv.classList.add('product')
-    li.appendChild(productDiv)
-
-    const hr = document.createElement('hr')
-    hr.classList.add('solid')
-
-
-    if (product.image) {
-        const image = document.createElement('img')
-        image.src = product.image
-        productDiv.appendChild(image)
-    }
-
-    const productInfo = document.createElement('div')
-    productInfo.classList.add('product-info')
-    productDiv.appendChild(productInfo)
-
-    for (const key in product) {
-        if (key === 'id' || key === 'image') {
-            continue
-        }
-
-
-        if (key === 'image') {
-            const image = document.createElement('img')
-            image.src = product.image
-            productDiv.appendChild(image)
-        }
-
-        let clonedSpan = document.createElement('span')
-        clonedSpan.classList.add(`product-${key}`)
-        clonedSpan.textContent = product[key]
-        productInfo.appendChild(clonedSpan)
-
-        if (key === 'brand') {
-            clonedSpan.textContent = `Brand: ${product[key]}`
-        }
-        if (key === 'size') {
-            clonedSpan.textContent = `Size: ${product[key]}`
-        }
-        if (key === 'color') {
-            clonedSpan.textContent = `Color: ${product[key]}`
-        }
-        if (key === 'price') {
-            clonedSpan.textContent = `1 x $${product[key]}`
-        }
-
-    }
-
-    cartModalUl.appendChild(li)
-    if (currentIndex !== totalProducts - 1) {
-        const hr = document.createElement('hr');
-        hr.classList.add('solid');
-        cartModalUl.appendChild(hr);
-    }
-
-}
-
-let totalProducts = Object.keys(productData).length
-for (const [index, productId] of Object.keys(productData).entries()) {
-    const product = productData[productId];
-    renderProduct(product, index, totalProducts);
-}
 
 // Scroll buttons
 let scrollUp = document.querySelector('#scroll-button-up')
@@ -122,7 +130,7 @@ scrollDown.addEventListener('click', function () {
     const li = document.getElementById('list')
     const hr = document.querySelector('.solid')
 
-    let scrollHeight = li.offsetHeight + 6 + hr.offsetHeight + 10
+    let scrollHeight = li.offsetHeight + 4 + hr.offsetHeight + 10
     console.log(`${scrollHeight} pixel`)
     cartModalUl.scrollBy(0, scrollHeight)
 })
@@ -132,7 +140,7 @@ scrollUp.addEventListener('click', function () {
     const li = document.getElementById('list')
     const hr = document.querySelector('.solid')
 
-    let scrollHeight = li.offsetHeight + 6 + hr.offsetHeight + 10
+    let scrollHeight = li.offsetHeight + 4 + hr.offsetHeight + 10
 
     console.log(`${scrollHeight} pixel`)
     cartModalUl.scrollBy(0, -scrollHeight)

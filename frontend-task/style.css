@@ -7,6 +7,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 10px;
     top: 0;
     left: 0;
@@ -36,11 +37,10 @@ nav {
     display: none;
     margin-top: 20px;
     position: fixed;
-    right: 480px;
+    right: calc(25% - 80px);
     flex-direction: column;
     width: 360px;
     min-height: 100px;
-
     box-shadow: 0 5px 10px 0 #00000073;
 
 }
@@ -114,11 +114,18 @@ hr.solid {
 
 .product-brand, .product-color, .product-size {
     color: #707070;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .product-price {
     margin-top: 10px;
+}
+
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .edit-cart-btn {
@@ -132,11 +139,16 @@ hr.solid {
 
 .checkout-btn {
     margin: 10px 0;
-    padding: 12px 60px;
+    padding: 12px 63px;
     background-color: #79AD36;
     color: white;
     border: 1px #79AD36 solid;
     cursor: pointer;
 }
 
+#scroll-button-up, #scroll-button-down {
+    padding: 8px 0;
+    background-color: #F9F9F9;
+    border: 2px solid #BCBCBC;
+}
 

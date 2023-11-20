@@ -1,37 +1,30 @@
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-import {getDatabase, ref, set} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js"
+import './firebase.js'
+import {getDatabase, ref, set} from "firebase/database";
 
-const db = getDatabase
+const productId = document.querySelector("#enterId");
+const enterImage = document.querySelector("#enterImage");
+const enterTitle = document.querySelector("#enterTitle");
+const enterBrand = document.querySelector("#enterBrand");
+const enterColor = document.querySelector("#enterColor");
+const enterSize = document.querySelector("#enterSize");
+const enterPrice = document.querySelector("#enterPrice");
 
+const addButton = document.querySelector("#add");
+const updateButton = document.querySelector("#update");
+const removeButton = document.querySelector("#remove");
 
-const enterId = document.querySelector('#enterId')
-const enterTitle = document.querySelector('#enterTitle')
-const enterBrand = document.querySelector('#enterBrand')
-const enterColor = document.querySelector('#enterColor')
-const enterSize = document.querySelector('#enterSize')
-const enterPrice = document.querySelector('#enterPrice')
-
-
-const addButton = document.querySelector('#add')
-const updateButton = document.querySelector('#update')
-const removeButton = document.querySelector('#remove')
-
+const db = getDatabase();
 
 function InsertData() {
-    set(ref(db, "Products/" + enterId.value), {
-        Title: enterTitle.value,
-        Brand: enterBrand.value,
-        Color: enterColor.value,
-        Size: enterSize.value,
-        Price: enterPrice.value
+    set(ref(db, "Products/" + productId.value), {
+        title: enterTitle.value, brand: enterBrand.value, color: enterColor.value, size: enterSize.value, price: enterPrice.value, image: enterImage.value
     })
         .then(() => {
-            alert('Data added successfully!')
+            alert("Data added successfully!");
         })
         .catch((error) => {
-            alert(error)
-        })
+            alert(error);
+        });
 }
 
 // function FindData() {
@@ -43,6 +36,6 @@ function UpdateData() {
 function RemoveData() {
 }
 
-addButton.addEventListener('click', InsertData)
-updateButton.addEventListener('click', UpdateData)
-removeButton.addEventListener('click', RemoveData)
+addButton.addEventListener("click", InsertData);
+updateButton.addEventListener("click", UpdateData);
+removeButton.addEventListener("click", RemoveData);
