@@ -17,9 +17,21 @@ main {
     flex-direction: column;
 }
 
+.inputFields > input {
+    padding: 10px 10px;
+}
+
 .buttons {
-    width: 20vh;
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+    min-width: 20vh;
+}
+.buttons > button {
+    padding:5px 10px;
+    margin:0 5px;
+
+    background: #FFFFFF;
+    border: 1px solid #0D0D0D;
+    cursor: pointer;
 }

@@ -2,12 +2,12 @@ import './firebase.js'
 import {getDatabase, ref, set} from "firebase/database";
 
 const productId = document.querySelector("#enterId");
-const enterImage = document.querySelector("#enterImage");
-const enterTitle = document.querySelector("#enterTitle");
-const enterBrand = document.querySelector("#enterBrand");
-const enterColor = document.querySelector("#enterColor");
-const enterSize = document.querySelector("#enterSize");
-const enterPrice = document.querySelector("#enterPrice");
+const productImage = document.querySelector("#enterImage");
+const productTitle = document.querySelector("#enterTitle");
+const productBrand = document.querySelector("#enterBrand");
+const productColor = document.querySelector("#enterColor");
+const productSize = document.querySelector("#enterSize");
+const productPrice = document.querySelector("#enterPrice");
 
 const addButton = document.querySelector("#add");
 const updateButton = document.querySelector("#update");
@@ -15,16 +15,23 @@ const removeButton = document.querySelector("#remove");
 
 const db = getDatabase();
 
+
 function InsertData() {
-    set(ref(db, "Products/" + productId.value), {
-        title: enterTitle.value, brand: enterBrand.value, color: enterColor.value, size: enterSize.value, price: enterPrice.value, image: enterImage.value
-    })
-        .then(() => {
-            alert("Data added successfully!");
+    if (productId.value === "" || productImage.value === "" || productTitle.value === "" || productPrice.value === "") {
+
+        alert("To add product to the cart you must enter: ID, Image location, Title and Price")
+
+    } else {
+        set(ref(db, "Products/" + productId.value), {
+            title: productTitle.value, brand: productBrand.value, color: productColor.value, size: productSize.value, price: productPrice.value, image: productImage.value
         })
-        .catch((error) => {
-            alert(error);
-        });
+            .then(() => {
+                alert("Data added successfully!");
+            })
+            .catch((error) => {
+                alert(error);
+            });
+    }
 }
 
 // function FindData() {

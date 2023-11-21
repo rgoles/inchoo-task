@@ -5,26 +5,28 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>product-manipulation</title>
-    <link href="products.css" rel="stylesheet">
+    <link href="add-products.css" rel="stylesheet">
 </head>
 <body>
 <main>
     <div class="inputFields">
         <h4>Add product</h4>
-        <input id="enterId" placeholder="id" type="text">
-        <input id="enterImage" placeholder="image" type="text">
-        <input id="enterTitle" placeholder="title" type="text">
+        <input id="enterId" placeholder="id" type="number" required>
+        <input id="enterImage" placeholder="image" type="text" required>
+        <input id="enterTitle" placeholder="title" type="text" required>
         <input id="enterBrand" placeholder="brand" type="text">
         <input id="enterColor" placeholder="color" type="text">
         <input id="enterSize" placeholder="size" type="text">
-        <input id="enterPrice" placeholder="price" type="text">
+        <input id="enterPrice" placeholder="price" type="number" required>
+
+
     </div>
     <div class="buttons">
         <button id="add">add</button>
         <button id="update">update</button>
         <button id="remove">remove</button>
     </div>
-    <p><a href="./index.html">Back to home</a></p>
+    <p><a href="home.html">Back to home</a></p>
 </main>
 <script src="baza.js" type="module"></script>
 <script src="firebase.js" type="module"></script>

@@ -9,18 +9,18 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Inchoo frontend task</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
 </head>
 <body>
 <nav>
     <img alt="inchoo logo" id="nav-logo" src="img/inchooLogo.svg">
-    <p><a href="products.html">Add products</a></p>
+    <p class="product-add-btn"><a href="add-products.html">ADD PRODUCTS</a></p>
     <div class="shopping-cart-div">
         <button class="shopping-cart-button" id="cart-button"><img alt="" src="img/shopping-cart.svg"></button>
         <div class="cart-modal">
             <div class="cart-modal-triangle"></div>
             <div class="cart-modal-opened">
-                <div><p id="product-number">My Cart (0 items)</p>
+                <div><p id="product-number"></p>
                 </div>
                 <button class="scroll-button" id="scroll-button-up"><img alt="" src="./img/arrowUp.svg"></button>
                 <div>
@@ -36,8 +36,7 @@
         </div>
     </div>
 </nav>
-<div>
-</div>
+
 <script src="script.js" type="module"></script>
 </body>
 </html>

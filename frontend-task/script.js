@@ -29,6 +29,13 @@ window.addEventListener('load', function () {
 const db = getDatabase();
 
 const productDataRef = ref(db, 'Products/');
+
+// cartModalUl - a place where product is rendered and shown
+let cartModalUl = document.querySelector('#cart-modal-ul')
+// variable for numbers of products in cart
+let productInCartCounter = 0
+
+
 onValue(productDataRef, (snapshot) => {
     const productData = snapshot.val();
 
@@ -90,12 +97,14 @@ onValue(productDataRef, (snapshot) => {
             productInfo.appendChild(clonedSpan)
         }
         const price = product.price || '';
+        const rndNum = Math.floor(Math.random() * 6) + 1
         if (price) {
             let clonedSpan = document.createElement('span')
             clonedSpan.classList.add(`product-price`)
-            clonedSpan.textContent = `1 x $${product.price}`
+            clonedSpan.textContent = `${rndNum} x $${product.price}`
             productInfo.appendChild(clonedSpan)
         }
+
 
 
         cartModalUl.appendChild(li)
@@ -113,12 +122,6 @@ onValue(productDataRef, (snapshot) => {
         renderProduct(product, index, totalProducts);
     }
 });
-
-
-// cartModalUl - a place where product is rendered and shown
-let cartModalUl = document.querySelector('#cart-modal-ul')
-// variable for numbers of products in cart
-let productInCartCounter = 0
 
 
 // Scroll buttons
@@ -145,5 +148,3 @@ scrollUp.addEventListener('click', function () {
     console.log(`${scrollHeight} pixel`)
     cartModalUl.scrollBy(0, -scrollHeight)
 })
-
-
