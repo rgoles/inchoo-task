@@ -10,8 +10,8 @@ const productSize = document.querySelector("#enterSize");
 const productPrice = document.querySelector("#enterPrice");
 
 const addButton = document.querySelector("#add");
-const updateButton = document.querySelector("#update");
-const removeButton = document.querySelector("#remove");
+/*const updateButton = document.querySelector("#update");
+const removeButton = document.querySelector("#remove");*/
 
 const db = getDatabase();
 
@@ -34,15 +34,15 @@ function InsertData() {
     }
 }
 
-// function FindData() {
-//  }
+/* function FindData() {
+ }
 
 function UpdateData() {
 }
 
 function RemoveData() {
-}
+}*/
 
 addButton.addEventListener("click", InsertData);
-updateButton.addEventListener("click", UpdateData);
-removeButton.addEventListener("click", RemoveData);
+/*updateButton.addEventListener("click", UpdateData);
+removeButton.addEventListener("click", RemoveData);*/
